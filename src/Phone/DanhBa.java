@@ -3,18 +3,32 @@ package Phone;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class DanhBa {
+public class DanhBa implements Initializable {
 
     public TextField FullName;
     public TextField PhoneNumber;
-    public ListView<Name> lv;
+    public static TextField stFullName;
+    public static TextField stPhoneNumber;
+
     public Name editName;
     public ObservableList<Name> listName = FXCollections.observableArrayList();
+    public static Name editDanhba;
+    public TableView<Name> tbview;
+    public TableColumn<Name,String> cName;
+    public TableColumn<Name,String> cPhoneNumber;
+    public TableColumn<Name, Button> cView;
 
 
     public void Submit(ActionEvent actionEvent) {
@@ -32,8 +46,8 @@ public class DanhBa {
             }
         }
 
-        lv.setItems(listName);
-        lv.refresh();
+        tbview.setItems(listName);
+        tbview.refresh();
         editName = null;
         clearInput();
 
@@ -44,8 +58,19 @@ public class DanhBa {
         PhoneNumber.clear();
     }
     public void name(MouseEvent mouseEvent){
-        editName = lv.getSelectionModel().getSelectedItem();
+//        editName = lv.getSelectionModel().getSelectedItem();
         FullName.setText(editName.getName());
         PhoneNumber.setText(editName.getPhonenumber());
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        cPhoneNumber.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
+        cView.setCellValueFactory(new PropertyValueFactory<>("Edit"));
+
+
+        stFullName = FullName;
+        stPhoneNumber = PhoneNumber;
     }
 }

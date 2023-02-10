@@ -4,12 +4,17 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane fx:controller="Phone.DanhBa" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Phone.DanhBa">
    <children>
       <TextField fx:id="FullName" layoutX="25.0" layoutY="54.0" prefHeight="31.0" prefWidth="266.0" promptText="Name" />
       <TextField fx:id="PhoneNumber" layoutX="25.0" layoutY="159.0" prefHeight="31.0" prefWidth="266.0" promptText="PhoneNumber" />
-      <Button onAction="#Submit"  layoutX="233.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" text="Submit" />
-      <ListView fx:id="lv" layoutX="375.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="175.0" layoutY="261.0" mnemonicParsing="false" onAction="#Submit" prefHeight="31.0" prefWidth="116.0" text="Submit" />
+      <TableView fx:id="tbview" layoutX="314.0" layoutY="54.0" prefHeight="200.0" prefWidth="266.0">
+        <columns>
+          <TableColumn fx:id="cName" prefWidth="87.0" text="Name" />
+          <TableColumn fx:id="cPhoneNumber" prefWidth="94.0" text="PhoneNumber" />
+            <TableColumn prefWidth="94.0" text="View" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

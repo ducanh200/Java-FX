@@ -1,12 +1,29 @@
 package Phone;
 
+import javafx.scene.control.Button;
+
 public class Name {
     String name;
     String phonenumber;
+    Button edit;
 
     public Name(String name,String phonenumber) {
         this.name = name;
         this.phonenumber = phonenumber;
+        this.edit = new Button("Edit");
+        this.edit.setOnAction((event)->{
+            DanhBa.editDanhba = this;
+            DanhBa.stFullName.setText(this.name);
+            DanhBa.stPhoneNumber.setText(this.phonenumber);
+        });
+    }
+
+    public Button getEdit() {
+        return edit;
+    }
+
+    public void setEdit(Button edit) {
+        this.edit = edit;
     }
 
     public String getName() {
